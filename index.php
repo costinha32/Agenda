@@ -19,7 +19,7 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto&display=swap');
     *{
-        padding: 0px;
+        padding: 10px;
         margin: 0px;
     }
     a {
@@ -37,6 +37,7 @@
         width: 350px;
         height: absolute;
         position: absolute  ;
+        border-radius: 5px;
     }
     a {
         background-color: transparent;

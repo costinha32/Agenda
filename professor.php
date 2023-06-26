@@ -3,6 +3,9 @@
 
     if (isset($_POST['btnApagar']))
     {
+        $apagar = $_POST['btnApagar'];
+        $sql_code ="DELETE FROM professor WHERE codigo = '$apagar'"; 
+        $sql_query = $con ->query($sql_code);
         echo "Funcionoou";
     }
 
@@ -19,29 +22,54 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto&display=swap');
       body {
-            background-color: gray;
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
+            background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
+            color: white;
+            text-align: central;
+            font-size: 10px;
         }  
       table {
-            background-color: transparent;
+            background-color: rgba(0, 0, 0, .3);
             font-family: 'Roboto', sans-serif;
-            border-radius: 10px;   
+            border-radius: 15px 15px 0 0;   
             align-items: center;
-            border-color: black;
+            border: 1px;
+            border-right: none;
+            border-left: none;
+            gap: .1%;
         }
-        
+        table tr th{
+            border: none;
+            border-right: 1px;
+
+        }
+        table tr td{
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        a {
+            font-size: 20px;
+            color: white;
+        }
+        a:hover {
+            color: blue;
+        }
+        .form-box{
+            align-items: center;
+        }
     </style>
 
 </head>
 <body>
     <h1>LISTA DE PROFESSORES</h1>
+   
 
     <form action="" method="POST">
         <input type="text" name="txtBuscar" placeholder="Digite um nome...">
     <button type="submit" name="btnBuscar" >Buscar</button>
 </form>
 <form action="" method="POST">
+    <div class = "form-box">
     <table border="2px">
         <tr>
             
@@ -98,9 +126,11 @@
 
         </tr>
         <?php  } ?>
-    
+        </div>
         </form>
     </table>
+
+    <a href="index.php">Home</a>
     
 
 </body>
