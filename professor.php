@@ -5,8 +5,7 @@
     {
         $apagar = $_POST['btnApagar'];
         $sql_code ="DELETE FROM professor WHERE codigo = '$apagar'"; 
-        $sql_query = $con ->query($sql_code);
-        echo "Funcionoou";
+        $sql_query = $con->query($sql_code);
     }
 
 ?>
@@ -73,23 +72,16 @@
     <table border="2px">
         <tr>
             
-            <th>Titulação</th>
+            <th>#</th>
             <th>Nome</th>
             <th>E-mail</th>
-            <th>Apagar</th>
-            <th>Sigla</th>            
-            <th>Número de Alunos</th>
-            <th>Sala</th>
-            <th>Nome</th>
-            <th>Carga horária</th>
-            <th>Livro</th>
-
+            <th>Titulação</th>
         </tr>
         <?php
 
             if(isset($_POST['btnBuscar'])){
                 $pesquisa = $_POST['txtBuscar'];
-                $sql_code = "SELECT * FROM professor AS p INNER JOIN turma AS t INNER JOIN disciplina AS d ON p.codigo = t.fk_idprofessor AND d.idDisciplina = t.fk_iddisciplina"; 
+                $sql_code = "SELECT * FROM professor where nome like '%$pesquisa%'"; 
                 //$sql_code = "SELECT * FROM Professor  AS P INNER JOIN disciplina AS D ON P.codigo = d.idDisciplina WHERE nome LIKE  '%$pesquisa%'";
 
             }else{$sql_code = "SELECT * FROM Professor";
@@ -103,9 +95,10 @@
             
         ?>
         <tr>
-            <td><?php echo $dados['titulacao']; ?>.</td>
+            <td><?php echo $dados['codigo']; ?></td>
             <td><?php echo $dados['nome']; ?></td>
             <td><?php echo $dados['email']; ?></td>
+            <td><?php echo $dados['titulacao']; ?>.</td>
           <td> 
            
             <center>
@@ -114,15 +107,7 @@
             </button>
             </center>
            
-        </td>
-        <td><?php echo $dados['sigla']; ?></td>
-        <td><?php echo $dados['nAlunos']; ?></td>
-        <td><?php echo $dados['sala']; ?></td>
-        <td><?php echo $dados['nomeDisciplina']; ?></td>
-        <td><?php echo $dados['cargaHoraria']; ?></td>
-        <td><?php echo $dados['livro']; ?></td>
-
-            
+        </td>       
 
         </tr>
         <?php  } ?>
@@ -131,6 +116,25 @@
     </table>
 
     <a href="index.php">Home</a>
+
+    <form action="" method="POST">
+    <input type="text" name="txtCodigo" placeholder="Digite o código do  Professor">
+    <input type="text" name="txtNome" placeholder="Digite o nome do Professor">
+    <input type="text" name="txtEmail" placeholder="Digite o email">
+    <input type="text" name="txtTitulacao" placeholder="Digite sua titulação">
+    <button type="submit" name="btnInserir" id="btnInserir">Inserir</button>
+</form>
+
+    <form action="" method = "POST">
+   
+   <?php
+    if(isset($_POST['btnInserir'])){
+       $sql_code = "INSERT INTO professor (codigo, nome, email, titulacao) VALUES('" . $_POST['txtCodigo'] . "','" . $_POST['txtNome'] . "','".$_POST['txtEmail'] . 
+       "','". $_POST['txtTitulacao'] . "')"; 
+       $sql_query = $con->query($sql_code);
+   }
+   ?>
+       </form>
     
 
 </body>

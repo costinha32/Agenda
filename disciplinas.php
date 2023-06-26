@@ -52,8 +52,13 @@
             border-top: none;
         }
         .btnBuscar{
-            margin: 10px;
-            padding: 20px;
+            margin: 1px;
+            padding: 2px;
+            border-radius: 2px;
+        }
+        .inputBuscar {
+            margin: 1px;
+            padding: 2px;
             border-radius: 2px;
         }
     </style>
@@ -63,8 +68,8 @@
    LISTA DE DISCIPLINAS
    
 <form action="" method="POST">
-    <input type="text" name="txtBuscar" placeholder="Digite um nome...">
-    <button type="submit" name="btnBuscar" id="btnBuscar">Buscar</button>
+    <input class = "inputBuscar" type="text" name="txtBuscar" placeholder="Digite um nome...">
+    <button class = "btnBuscar" type="submit" name="btnBuscar" id="btnBuscar">Buscar</button>
 </form>
 
     <form action="" method = "POST">
@@ -120,7 +125,8 @@
    
     <?php
      if(isset($_POST['btnInserir'])){
-        $sql_code = "INSERT INTO aluno(registro, nome, dataNascimento) VALUES('" .$_POST['txtNome']. "','". $_POST['txtCarga']. "','". $_POST['txtLivro']. "')"; 
+        $sql_code = "INSERT INTO disciplina(nomeDisciplina, cargaHoraria, livro) VALUES('" . $_POST['txtNome']. "','". $_POST['txtCarga']. 
+        "','". $_POST['txtLivro']. "')"; 
     }
     while($dados = $sql_query->fetch_assoc()) {
     ?>
